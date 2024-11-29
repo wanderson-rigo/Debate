@@ -2,21 +2,28 @@ import tkinter as tk
 import random
 import time
 import winsound
+import json
 
 class Application:
     def __init__(self, root):
         self.root = root
-        self.root.title("Aplicação de Sorteio e Cronômetro")
+        self.root.title("Sorteio e Cronômetro para Debates")
         self.button_font_size = 20
         self.custom_font = ("Helvetica", 40)
         self.frame_borderwidth = 0
 
-        self.names = ['Candidado X', 'Candidado Y', 'Candidado Z']
+          # Carregar dados do arquivo config.json
+        with open("config.json", "r", encoding="utf-8") as config_file:
+            config = json.load(config_file)
+            self.names = config.get("names", [])
+            self.themes = config.get("themes", [])
+
+        #self.names = ['Candidado X', 'Candidado Y', 'Candidado Z']
         self.selected_names = self.names.copy()
         self.name_counter = 1
         self.theme_counter = 1
 
-        self.themes = ['Ensino', 'Pesquisa e Pós-Graduação e Inovação', 'Editora IFC', 'Extensão', 'Esporte e Lazer', 'Servidores', 'Infraestrutura e Planejamento', 'Assistência ao Educando']
+        #self.themes = ['Ensino', 'Pesquisa e Pós-Graduação e Inovação', 'Editora IFC', 'Extensão', 'Esporte e Lazer', 'Servidores', 'Infraestrutura e Planejamento', 'Assistência ao Educando']
         self.available_themes = self.themes.copy()
 
         self.center_frame = tk.Frame(root, borderwidth=self.frame_borderwidth, relief=tk.GROOVE)
