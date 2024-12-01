@@ -3,14 +3,18 @@ import random
 import time
 import winsound
 import json
+from tkinter import messagebox
 
 class Application:
     def __init__(self, root):
         self.root = root
-        self.root.title("Sorteio e Cronômetro para Debates")
+        self.root.title("IFairC - Sorteio e Cronômetro para Debates")
         self.button_font_size = 20
         self.custom_font = ("Helvetica", 40)
         self.frame_borderwidth = 0
+
+        # Criar o menu
+        self.create_menu()
 
           # Carregar dados do arquivo config.json
         with open("config.json", "r", encoding="utf-8") as config_file:
@@ -111,6 +115,24 @@ class Application:
 
         self.first_name_selection = True
         self.remaining_names = []
+
+    def create_menu(self):
+        menu_bar = tk.Menu(self.root)
+        self.root.config(menu=menu_bar)
+
+        help_menu = tk.Menu(menu_bar, tearoff=0)
+        #
+        menu_bar.add_cascade(label="Ajuda", menu=help_menu)
+        help_menu.add_command(label="Como usar", command=self.show_help)
+        help_menu.add_command(label="Sobre", command=self.show_about)
+        
+
+    def show_help(self):
+        tk.messagebox.showinfo("Ajuda", "Este aplicativo permite sorteios de participantes e temas, além da gestão de tempos para debates.")
+
+    def show_about(self):
+        tk.messagebox.showinfo("Sobre", "IFairC - Gestçao de Debates v1.0\nDesenvolvido pelo prof. Wanderson Rigo.")
+
 
     def get_selected_names(self):
         selected_names = []
