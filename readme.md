@@ -2,7 +2,7 @@
 
 Esta aplicação interativa torna organização e a condução de um debate muito mais centralizada, fácil, ágil e transparente. Permite realizar sorteios dos nomes dos participantes e de temas, por ordem, além de oferecer funcionalidades de cronômetro ampliado para gestão transparente e pública de tempo. Foi desenvolvido em Python com interface gráfica baseada em Tkinter.
 
-![](https://github.com/wanderson-rigo/Debate/anime.gif)
+![](https://github.com/wanderson-rigo/Debate/blob/main/anime.gif)
 
 ## Funcionalidades
 
